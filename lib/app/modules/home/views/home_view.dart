@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_app_by_akash/app/data/widgets/mainlayout.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -10,118 +11,96 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            height: h * 0.50,
-            width: w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: MainLayOut(
+        beforeGradient: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: h * 0.05),
+            Center(
+              child: Image.asset(
+                "assets/png/appleWhite.png",
+                height: h * 0.06,
+              ),
+            ),
+            SizedBox(height: h * 0.05),
+            const Text(
+              "Apple Inc",
+              style: TextStyle(fontSize: 24),
+            ),
+            const Text(
+              "AAPL",
+              style: TextStyle(fontSize: 20),
+            ),
+            const SizedBox(height: 20),
+            ToggleButtonsWidget(
+              onFirstButtonPressed: () {},
+              onSecondButtonPressed: () {},
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              "Interact with missed meetings. ask questions and get summaries on crucial company calls",
+              style: TextStyle(color: Colors.grey, fontSize: 16),
+            ),
+            const SizedBox(height: 30),
+            ToggleButtonsWidget(
+              height: 30,
+              firstButtonName: "Yearly",
+              secondButtonName: "Quarterly",
+              onFirstButtonPressed: () {
+                controller.isYearlyPressed.value = true;
+              },
+              onSecondButtonPressed: () {
+                controller.isYearlyPressed.value = false;
+              },
+            ),
+          ],
+        ),
+        afterGradient: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Obx(() {
+            return Column(
               children: [
-                SizedBox(height: h * 0.05),
-                Center(
-                  child: Image.asset(
-                    "assets/png/appleWhite.png",
-                    height: h * 0.06,
-                  ),
-                ),
-                SizedBox(height: h * 0.05),
-                const Text(
-                  "Apple Inc",
-                  style: TextStyle(fontSize: 24),
-                ),
-                const Text(
-                  "AAPL",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 20),
-                ToggleButtonsWidget(
-                  onFirstButtonPressed: () {},
-                  onSecondButtonPressed: () {},
-                ),
-                const SizedBox(height: 30),
-                const Text(
-                  "Interact with missed meetings. ask questions and get summaries on crucial company calls",
-                  style: TextStyle(color: Colors.grey, fontSize: 16),
-                ),
-                const SizedBox(height: 30),
-                ToggleButtonsWidget(
-                  height: 30,
-                  firstButtonName: "Yearly",
-                  secondButtonName: "Quarterly",
-                  onFirstButtonPressed: () {
-                    controller.isYearlyPressed.value = true;
-                  },
-                  onSecondButtonPressed: () {
-                    controller.isYearlyPressed.value = false;
-                  },
+                controller.isYearlyPressed.value == true
+                    ?
+                const MyTextWidgetWithoutCard(title: "", data1: "2023", data2: "2022", data3: "2021",)
+                    :
+                const MyTextWidgetWithoutCard(title: "",
+                  data1: "Dec '23",
+                  data2: "Sep '23",
+                  data3: "Jun '23",),
+
+                const MyTextWidget(title: "Revenue",
+                  data1: "394B",
+                  data2: '366B',
+                  data3: '240B',),
+                const MyTextWidget(title: "Gross Profit",
+                  data1: "366B",
+                  data2: '392B',
+                  data3: '170B',),
+                const MyTextWidget(title: "Net Income",
+                  data1: "366B",
+                  data2: '392B',
+                  data3: '170B',),
+                const MyTextWidget(title: "EBIDTA",
+                  data1: "366B",
+                  data2: '392B',
+                  data3: '170B',),
+                const MyTextWidget(title: "EPS",
+                  data1: "366B",
+                  data2: '392B',
+                  data3: '170B',),
+
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 20),
+                  child: Align(
+                      alignment:Alignment.bottomRight,
+                      child: Text("All Figures in USD (\$)", style: TextStyle(color: Colors.white,fontSize: 10))),
                 ),
               ],
-            ),
-          ),
-
-          Expanded(
-            child: Container(
-              width: w,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.white, Colors.blueGrey.shade600],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      tileMode: TileMode.repeated)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Obx(() {
-                  return Column(
-                    children: [
-                      controller.isYearlyPressed.value == true
-                          ?
-                      const MyTextWidgetWithoutCard(title: "", data1: "2023", data2: "2022", data3: "2021",)
-                          :
-                      const MyTextWidgetWithoutCard(title: "",
-                        data1: "Dec '23",
-                        data2: "Sep '23",
-                        data3: "Jun '23",),
-
-                      const MyTextWidget(title: "Revenue",
-                        data1: "394B",
-                        data2: '366B',
-                        data3: '240B',),
-                      const MyTextWidget(title: "Gross Profit",
-                        data1: "366B",
-                        data2: '392B',
-                        data3: '170B',),
-                      const MyTextWidget(title: "Net Income",
-                        data1: "366B",
-                        data2: '392B',
-                        data3: '170B',),
-                      const MyTextWidget(title: "EBIDTA",
-                        data1: "366B",
-                        data2: '392B',
-                        data3: '170B',),
-                      const MyTextWidget(title: "EPS",
-                        data1: "366B",
-                        data2: '392B',
-                        data3: '170B',),
-
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 20),
-                        child: Align(
-                          alignment:Alignment.bottomRight,
-                            child: Text("All Figures in USD (\$)", style: TextStyle(color: Colors.white,fontSize: 10))),
-                      ),
-                    ],
-                  );
-                }),
-              ),
-
-            ),
-          ),
-        ],
+            );
+          }),
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:test_app_by_akash/app/data/widgets/mainlayout.dart';
 
 import '../controllers/explore_page_controller.dart';
 
@@ -13,12 +14,10 @@ class ExplorePageView extends GetView<ExplorePageController> {
         title: const Text('ExplorePageView'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'ExplorePageView is working',
-          style: TextStyle(fontSize: 20),
-        ),
-      ),
+      body: MainLayOut(
+        beforeGradient: Text("Hey Sachin"),
+        afterGradient: Text("Hello Sachin"),
+      )
     );
   }
 }
