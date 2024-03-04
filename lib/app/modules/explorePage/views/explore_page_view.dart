@@ -10,11 +10,7 @@ class ExplorePageView extends GetView<ExplorePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ExplorePageView'),
-        centerTitle: true,
-      ),
-      body: MainLayOut(
+      body: const MainLayout(
         beforeGradient: Text("Hey Sachin"),
         afterGradient: Text("Hello Sachin"),
       )

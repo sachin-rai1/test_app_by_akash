@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainLayOut extends StatelessWidget {
-  const MainLayOut({super.key, this.beforeGradient, this.afterGradient});
+class MainLayout extends StatelessWidget {
+  const MainLayout({super.key, this.beforeGradient, this.afterGradient});
 
   final Widget? beforeGradient;
   final Widget? afterGradient;
@@ -20,7 +20,6 @@ class MainLayOut extends StatelessWidget {
             width: w,
             child: beforeGradient,
           ),
-
           Container(
             height: h*0.5,
             width: w,
@@ -34,7 +33,6 @@ class MainLayOut extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: afterGradient,
             ),
-
 
           ),
         ],

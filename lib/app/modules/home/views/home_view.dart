@@ -12,18 +12,18 @@ class HomeView extends GetView<HomeController> {
     var h = MediaQuery.of(context).size.height;
     var w = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: MainLayOut(
+      body: MainLayout(
         beforeGradient: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: h * 0.05),
+            SizedBox(height: h * 0.04),
             Center(
               child: Image.asset(
                 "assets/png/appleWhite.png",
                 height: h * 0.06,
               ),
             ),
-            SizedBox(height: h * 0.05),
+            SizedBox(height: h * 0.04),
             const Text(
               "Apple Inc",
               style: TextStyle(fontSize: 24),
@@ -37,12 +37,12 @@ class HomeView extends GetView<HomeController> {
               onFirstButtonPressed: () {},
               onSecondButtonPressed: () {},
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             const Text(
               "Interact with missed meetings. ask questions and get summaries on crucial company calls",
               style: TextStyle(color: Colors.grey, fontSize: 16),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
             ToggleButtonsWidget(
               height: 30,
               firstButtonName: "Yearly",

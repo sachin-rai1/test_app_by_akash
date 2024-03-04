@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
+import 'package:test_app_by_akash/app/modules/get_started/views/get_started_view.dart';
 
-class BottomNavigationController extends GetxController {
-  RxInt selectedIndex = 0.obs;
+class SplashScreenController extends GetxController {
   RxBool isSplashScreenLoading = false.obs;
 
   @override
@@ -10,14 +10,10 @@ class BottomNavigationController extends GetxController {
     super.onInit();
   }
 
-
   Future<void> loadingSplashScreen() async {
     isSplashScreenLoading.value = true;
-    await Future.delayed(const Duration(milliseconds: 2500));
+    await Future.delayed(const Duration(milliseconds: 2000));
     isSplashScreenLoading.value = false;
-  }
-
-  void onItemTapped(int index) {
-      selectedIndex.value = index;
+    // Get.to(() => GetStartedView());
   }
 }
